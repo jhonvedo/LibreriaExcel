@@ -1,13 +1,16 @@
-# Libreria Excel
-
-Libreria hecha para exportar documentos básicos para excel (formato xlsx)
+# ExcelLibrary.Reader
 
 ## Librerias de terceros 
-*   Microsoft.Office.Interop.Excel
+*   
 
 ## Hecho por
  * [JhonMontoya] 
  * [JuanYarce] 
+
+## Ejemplo de uso
+```
+
+```
  
  ## Version: 0.2.0
 

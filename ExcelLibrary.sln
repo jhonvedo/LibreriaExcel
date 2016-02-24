@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary.Writer", "ExcelLibrary.Writer\ExcelLibrary.Writer.csproj", "{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary.Reader", "ExcelLibrary.Reader\ExcelLibrary.Reader.csproj", "{C3E986C5-C13F-4D58-8076-79385F24D166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E986C5-C13F-4D58-8076-79385F24D166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E986C5-C13F-4D58-8076-79385F24D166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E986C5-C13F-4D58-8076-79385F24D166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E986C5-C13F-4D58-8076-79385F24D166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

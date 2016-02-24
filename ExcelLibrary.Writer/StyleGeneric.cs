@@ -1,4 +1,4 @@
-﻿namespace ExcelLibreria
+﻿namespace ExcelLibrary.Writer
 {
     public class StyleGeneric
     {

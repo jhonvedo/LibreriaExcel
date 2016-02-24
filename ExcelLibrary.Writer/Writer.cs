@@ -1,9 +1,9 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 
-namespace ExcelLibreria
+namespace ExcelLibrary.Writer
 {
-    public class ExcelLib 
+    internal class Writer
     {
         #region PROPIEDADES
 
@@ -39,6 +39,7 @@ namespace ExcelLibreria
             get { return ruta; }
             set { ruta = value; }
         }
+
         #endregion ATRIBUTOS
 
         #region CONSTRUCTOR
@@ -46,7 +47,7 @@ namespace ExcelLibreria
         /// <summary>
         /// Constuctor por defector,
         /// </summary>
-        public ExcelLib()
+        public Writer()
         {
             xlApp = new Application();
             object misValue = System.Reflection.Missing.Value;
@@ -71,6 +72,7 @@ namespace ExcelLibreria
         }
 
         #region AddData
+
         public void AddDataWithMergue(string _begin, string _end, bool _mergue, int _columnWidth = -1)
         {
             Range x = xlSheet.get_Range(_begin, _end);
@@ -83,7 +85,6 @@ namespace ExcelLibreria
         {
             Range x = xlSheet.get_Range(_begin, _end);
             x.Value2 = _str;
-
         }
 
         public void AddDataInteger(string _begin, string _end, int _int)
@@ -103,7 +104,8 @@ namespace ExcelLibreria
             Range x = xlSheet.get_Range(_begin, _end);
             x.Value2 = _date;
         }
-        #endregion
+
+        #endregion AddData
 
         public void AddFormat(string _begin, string _end, string _format)
         {
@@ -115,10 +117,10 @@ namespace ExcelLibreria
         {
             Range x = xlSheet.get_Range(_style.Begin, _style.End);
 
-            if(_style.WrapText != null)
+            if (_style.WrapText != null)
                 x.WrapText = _style.WrapText;
 
-            if(_style.Bold != null)
+            if (_style.Bold != null)
                 x.Cells.Font.Bold = _style.Bold;
 
             if (_style.VerticalAlign == true)
@@ -136,7 +138,6 @@ namespace ExcelLibreria
             }
             if (_style.Color != null)
                 x.Interior.Color = System.Drawing.ColorTranslator.ToOle((System.Drawing.Color)_style.Color);
-
         }
 
         public void SaveBook()

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ExcelLibreria")]
+[assembly: AssemblyTitle("ExcelLibrary.Writer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ExcelLibreria")]
+[assembly: AssemblyProduct("ExcelLibrary.Writer")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("98b98aa1-d1d4-4118-935f-c38bf711d0d1")]
+[assembly: Guid("95d4ba3e-90d8-4c40-b4d1-c422d3a8be42")]
 
 // Version information for an assembly consists of the following four values:
 //
