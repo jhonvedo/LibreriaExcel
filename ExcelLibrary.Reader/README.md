@@ -60,8 +60,6 @@ namespace CargueExcel
     }
 }
 ```
- 
- ## Version: 0.2.0
 
 [JhonMontoya]: <https://github.com/jhonvedo>
 [JuanYarce]: <https://github.com/JuanEstebanYC>

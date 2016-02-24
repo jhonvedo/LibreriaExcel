@@ -9,7 +9,7 @@ Libreria hecha para exportar documentos básicos para excel (formato xlsx)
  * [JhonMontoya] 
  * [JuanYarce] 
  
- ## Version: 0.2.0
+## Version: 0.2.0
 
 [JhonMontoya]: <https://github.com/jhonvedo>
 [JuanYarce]: <https://github.com/JuanEstebanYC>
