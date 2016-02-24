@@ -3,7 +3,7 @@ using System;
 
 namespace ExcelLibrary.Writer
 {
-    internal class Writer
+    public class Writer
     {
         #region PROPIEDADES
 

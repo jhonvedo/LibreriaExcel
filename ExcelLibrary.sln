@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary.Writer", "Exce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary.Reader", "ExcelLibrary.Reader\ExcelLibrary.Reader.csproj", "{C3E986C5-C13F-4D58-8076-79385F24D166}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Writer", "Writer", "{7B4FC79C-3849-457C-8CE9-EB1117070B3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reader", "Reader", "{9B72AAFC-EC50-4698-A3E9-D2222085960C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{95D4BA3E-90D8-4C40-B4D1-C422D3A8BE42} = {7B4FC79C-3849-457C-8CE9-EB1117070B3F}
+		{C3E986C5-C13F-4D58-8076-79385F24D166} = {9B72AAFC-EC50-4698-A3E9-D2222085960C}
 	EndGlobalSection
 EndGlobal

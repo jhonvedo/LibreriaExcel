@@ -9,7 +9,7 @@
 
 ## Ejemplo de uso
 ```
-using ExcelLibreria;
+using ExcelLibrary.Writer;
 using System;
 using System.Drawing;
 
@@ -19,7 +19,7 @@ namespace PruebaLibreriaExcel
     {
         private static void Main(string[] args)
         {
-            ExcelLib _excel = new ExcelLib();
+            Writer _excel = new Writer();
             _excel.Ruta = "D:\\Prueba.xlsx";
 
             _excel.AddDataString("A1","A1","id");
@@ -27,25 +27,10 @@ namespace PruebaLibreriaExcel
             _excel.AddDataString("C1", "C1", "fecha nac");
             _excel.AddDataString("D1", "D1", "edad");
 
-            _excel.Style(new StyleGeneric() {
-                Begin = "A1",
-                End = "D1",
-                VerticalAlign = true,
-                HorizontalAlign = true,
-                WrapText = true,
-                Bold = true,
-                Color = Color.Orange,
-                LineStyle = true,
-                LineWeight = 3d });
-
+            _excel.Style(new StyleGeneric() { Begin = "A1", End = "D1", VerticalAlign = true, HorizontalAlign = true, WrapText = true, Bold = true, Color = Color.Orange, LineStyle = true, LineWeight = 3d });
             for (int i = 2; i < 250; i++)
             {
-                persona per = new persona{
-                    id =i,
-                    nombre =string.Format("Nombre_{0}",i),
-                    FechaNacimeinto = DateTime.Now,
-                    edad = i
-                };
+                persona per = new persona{id=i,nombre=string.Format("Nombre_{0}",i),FechaNacimeinto=DateTime.Now,edad= i};
                 _excel.AddDataInteger("A" + i,"A"+i,per.id);
                 _excel.AddDataString("B" + i, "B" + i, per.nombre);
                 _excel.AddDataDateTime("C" + i, "C" + i, per.FechaNacimeinto);
@@ -58,7 +43,6 @@ namespace PruebaLibreriaExcel
         }
     }
 }
-
 class persona
 {
     public int id { get; set; }
@@ -66,8 +50,6 @@ class persona
     public DateTime FechaNacimeinto { get; set; }
     public double edad { get; set; }
 }
-
-
 ```
 
 [JhonMontoya]: <https://github.com/jhonvedo>
