@@ -5,7 +5,7 @@ using System.Data.OleDb;
 
 namespace ExcelLibrary.Reader
 {
-    public class Reader
+    public class ExcelReader
     {
         #region PROPIEDADES
 
@@ -62,7 +62,7 @@ namespace ExcelLibrary.Reader
 
         #region METODOS_PUBLICOS
 
-        public Reader()
+        public ExcelReader()
         {
             strNameSheet = "";
             objConnector = default(OleDbConnection);

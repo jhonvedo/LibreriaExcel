@@ -1,9 +1,11 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace ExcelLibrary.Writer
 {
-    public class Writer
+    public class ExcelWriter
     {
         #region PROPIEDADES
 
@@ -47,7 +49,7 @@ namespace ExcelLibrary.Writer
         /// <summary>
         /// Constuctor por defector,
         /// </summary>
-        public Writer()
+        public ExcelWriter()
         {
             xlApp = new Application();
             object misValue = System.Reflection.Missing.Value;
@@ -59,16 +61,27 @@ namespace ExcelLibrary.Writer
 
         #region MÉTODOS PÚBLICOS
 
-        public void CloseBook()
-        {
-            if (xlBook.IsInplace)
-                xlBook.Close(true);
-        }
+        //public void CloseBook()
+        //{
+        //    if (xlBook.IsInplace)
+        //        xlBook.Close(true);
+        //}
 
-        public void CloseApp()
+        //public void CloseApp()
+        //{
+        //    //TODO: Validar que si este abierto el aplicativo
+        //    //TODO: Cerra el libro
+        //    //TODO: Liberar Recursos
+        //    xlApp.Quit();
+        //}
+
+        public void Close()
         {
-            //TODO: Validar que si este abierto el aplicativo
+            xlBook.Close(true);
             xlApp.Quit();
+
+            Process _pro = GetExcelProcess(xlApp);
+            _pro.Kill();
         }
 
         #region AddData
@@ -106,6 +119,29 @@ namespace ExcelLibrary.Writer
         }
 
         #endregion AddData
+
+        public void SetVerticalText(string _begin, string _end, string _str)
+        {
+            Range x = xlSheet.get_Range(_begin, _end);
+            x.Orientation = 90;
+
+            if (!string.IsNullOrEmpty(_str))
+            {
+                x.Value2 = _str;
+            }
+        }
+
+        public void SetSizeWith(string _begin, string _end, double _dbl)
+        {
+            Range x = xlSheet.get_Range(_begin, _end);
+            x.ColumnWidth = _dbl;
+        }
+
+        public void SetSizeHigh(string _begin, string _end, double _dbl)
+        {
+            Range x = xlSheet.get_Range(_begin, _end);
+            x.RowHeight = _dbl;
+        }
 
         public void AddFormat(string _begin, string _end, string _format)
         {
@@ -146,5 +182,38 @@ namespace ExcelLibrary.Writer
         }
 
         #endregion MÉTODOS PÚBLICOS
+
+        #region MÉTODOS PRIVADOS
+        [DllImport("user32.dll")]
+        static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
+
+        /// <summary>
+        /// Cerrado del aplicativo utilizando el Garbage Collector
+        /// </summary>
+        private void KillTheProcess()
+        {
+            xlSheet= null;
+            xlBook = null;
+            xlApp = null;
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
+
+        /// <summary>
+        /// Cerrado del aplicativo utilizando el Garbage Collector
+        /// </summary>
+        /// <param name="excelApp"></param>
+        /// <returns></returns>
+        
+        private Process GetExcelProcess(Application excelApp)
+        {
+            int id;
+            GetWindowThreadProcessId(excelApp.Hwnd, out id);
+            return Process.GetProcessById(id);
+        }
+        #endregion
     }
 }
