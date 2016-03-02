@@ -57,6 +57,12 @@ namespace ExcelLibrary.Writer
             xlSheet = (Worksheet)xlBook.Worksheets.get_Item(1);
         }
 
+        public ExcelWriter(string _SheetPath, string _SheetName)
+        {
+            xlApp = new Application();
+            xlBook = xlApp.Workbooks.Open(_SheetPath, 0, false, 5, "", "", false, XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+            xlSheet = (Worksheet)xlBook.Worksheets.get_Item(_SheetName);
+        }
         #endregion CONSTRUCTOR
 
         #region MÉTODOS PÚBLICOS
@@ -118,6 +124,24 @@ namespace ExcelLibrary.Writer
             x.Value2 = _date;
         }
 
+        public void AddDataImage(string _begin, string _end, string _str)
+        {
+            Pictures oPictures = (Pictures)xlSheet.Pictures(System.Reflection.Missing.Value);
+            Range x = xlSheet.get_Range(_begin, _end);
+
+            xlSheet.Shapes.AddPicture(_str,
+                    Microsoft.Office.Core.MsoTriState.msoFalse,
+                    Microsoft.Office.Core.MsoTriState.msoCTrue,
+                    float.Parse(x.Left.ToString()), float.Parse(x.Top.ToString()),
+                    float.Parse(x.Width.ToString()), float.Parse(x.Height.ToString()));
+
+        }
+
+        public void AddFormula(string _begin, string _end, string _str)
+        {
+            Range x = xlSheet.get_Range(_begin, _end);
+            x.Formula = _str;
+        }
         #endregion AddData
 
         public void SetVerticalText(string _begin, string _end, string _str)
@@ -179,6 +203,40 @@ namespace ExcelLibrary.Writer
         public void SaveBook()
         {
             xlBook.SaveAs(ruta, XlFileFormat.xlOpenXMLWorkbook);
+        }
+
+        public void SetPassBook(string _str)
+        {
+            xlBook.Protect(_str, true, true);
+        }
+
+        public void SetPassSheet(string _str)
+        {
+            xlSheet.Protect(_str);
+        }
+
+        public void SetPagePrint(PagePrinterGeneric _printer)
+        {
+            if (_printer.MarginHeader != null) { xlSheet.PageSetup.HeaderMargin = xlApp.CentimetersToPoints((double)_printer.MarginHeader); }
+            if (_printer.MarginFooter != null) { xlSheet.PageSetup.FooterMargin = xlApp.CentimetersToPoints((double)_printer.MarginFooter); }
+            if (_printer.MarginBottom != null) { xlSheet.PageSetup.BottomMargin = xlApp.CentimetersToPoints((double)_printer.MarginBottom); }
+            if (_printer.MarginTop != null) { xlSheet.PageSetup.TopMargin = xlApp.CentimetersToPoints((double)_printer.MarginTop); }
+            if (_printer.MarginRight != null) { xlSheet.PageSetup.RightMargin = xlApp.CentimetersToPoints((double)_printer.MarginRight); }
+            if (_printer.MarginLeft != null) { xlSheet.PageSetup.LeftMargin = xlApp.CentimetersToPoints((double)_printer.MarginLeft); }
+
+            if (_printer.PageTall != null) { xlSheet.PageSetup.FitToPagesTall = _printer.PageTall; }
+            if (_printer.PageWide != null) { xlSheet.PageSetup.FitToPagesWide = _printer.PageWide; }
+            if (_printer.PageOrientation != null)
+            {
+                if (_printer.PageOrientation == PagePrinterGeneric.VERTICAL)
+                {
+                    xlSheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                }
+                else if (_printer.PageOrientation == PagePrinterGeneric.HORIZONTAL)
+                {
+                    xlSheet.PageSetup.Orientation = XlPageOrientation.xlLandscape;
+                }
+            }
         }
 
         #endregion MÉTODOS PÚBLICOS

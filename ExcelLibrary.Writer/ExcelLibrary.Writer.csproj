@@ -53,8 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericClasses\PagePrinterGeneric.cs" />
+    <Compile Include="GenericClasses\StyleGeneric.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StyleGeneric.cs" />
     <Compile Include="ExcelWriter.cs" />
   </ItemGroup>
   <ItemGroup>
