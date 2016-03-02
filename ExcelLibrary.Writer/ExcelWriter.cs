@@ -8,7 +8,7 @@ namespace ExcelLibrary.Writer
     public class ExcelWriter
     {
         #region PROPIEDADES
-
+        /*propiedades de la clase*/
         private Application xlApp;
         private Workbook xlBook;
         private Worksheet xlSheet;
